@@ -33,9 +33,13 @@ source Run.sh
   * Enabled batch processing of multiple images
   * Fixed ROI selection – now works correctly from the first click
   * Corrected the thickness functions – each function now opens in a separate, * independent window
+  * Improved the noise reduction functionality using Artificial Intelligence
+  * Trained a machine learning model for remote, label-free, automated point-of-care disease diagnosis
+  * Used features extracted from DHM to train ML algorithms for detecting diseases such as malaria and sickle cell anemia
 
-## To do:
-  * Improve the noise reduction functionality using Artificial Intelligence
-  * Train a machine learning model for remote, label-free, automated point-of-care disease diagnosis.
-  * Use features extracted from DHM to train ML algorithms for detecting diseases * such as malaria and sickle cell anemia.
 
+## System Versions:
+# Local Version
+This is a standalone desktop software designed to work with a DHM (Digital Holographic Microscopy) add-on for regular microscopes. It handles live acquisition, phase reconstruction, ROI selection, and image processing locally using the connected Basler camera and the Pylon library. Can be found under the local directory  
+# Remote Version
+This is a web application designed to work with our in-house designed DHM system. It supports remote image upload, cloud-based reconstruction, AI-powered diagnostics, and batch analysis. It is built for scalability and accessibility, enabling point-of-care usage without the need for local processing power. Can be found under the remote directory  
