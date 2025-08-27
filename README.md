@@ -1,4 +1,8 @@
 # Collection of Resources and Findings During Our Time at ICTP
+## System Versions:
+# Local Version
+This is a standalone desktop software designed to work with a DHM (Digital Holographic Microscopy) add-on for regular microscopes. It handles live acquisition, phase reconstruction, ROI selection, and image processing locally using the connected Basler camera and the Pylon library. Can be found under the local directory  
+
 ## Before starting
 * Download and install pylon library, give sudo permit to install USB rules, in case of doubt, follow `Install.txt` instructions.
 
@@ -24,22 +28,20 @@ pip install -r venv_requirements/requirements.txt
 chmod +x Run.sh #Only the first time
 source Run.sh
 ```
-
-## Done so far:
-  * Made adjustments to the main DHM code:
+## Local Version improvements:
   * Organized the program to follow a logical sequence of operations
   * Added functionality to perform all operations with a single click
   * Resolved issues with negative/positive cells in phase computation
   * Enabled batch processing of multiple images
   * Fixed ROI selection – now works correctly from the first click
   * Corrected the thickness functions – each function now opens in a separate, * independent window
+
+# Remote Version
+This is a web application designed to work with our in-house designed DHM system. It supports remote image upload, cloud-based reconstruction, AI-powered diagnostics, and batch analysis. It is built for scalability and accessibility, enabling point-of-care usage without the need for local processing power. This version can be found under the Remote directory. 
+
+
   * Improved the noise reduction functionality using Artificial Intelligence
   * Trained a machine learning model for remote, label-free, automated point-of-care disease diagnosis
   * Used features extracted from DHM to train ML algorithms for detecting diseases such as malaria and sickle cell anemia
 
 
-## System Versions:
-# Local Version
-This is a standalone desktop software designed to work with a DHM (Digital Holographic Microscopy) add-on for regular microscopes. It handles live acquisition, phase reconstruction, ROI selection, and image processing locally using the connected Basler camera and the Pylon library. Can be found under the local directory  
-# Remote Version
-This is a web application designed to work with our in-house designed DHM system. It supports remote image upload, cloud-based reconstruction, AI-powered diagnostics, and batch analysis. It is built for scalability and accessibility, enabling point-of-care usage without the need for local processing power. Can be found under the remote directory  
