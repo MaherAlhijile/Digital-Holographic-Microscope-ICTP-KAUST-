@@ -25,7 +25,7 @@ source .venv/bin/activate
 pip install -r venv_requirements/requirements.txt
 ```
 
-*To run the software
+* To run the software
 
 ```Bash
 chmod +x Run.sh #Only the first time
@@ -82,10 +82,10 @@ Features include:
 1. Navigate to the backend folder
 ```Bash
 cd remote/backend
-uvicorn server:app --reload
+uvicorn --DHM 192.168.1.121 server:app --port:8000 --reload
 ```
 
-This starts the FastAPI server at http://127.0.0.1:8000.
+This starts the FastAPI server at http://192.168.1.121.
 
 2. Open the frontend (remote/frontend/index.html) in a browser.
 
