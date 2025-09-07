@@ -13,7 +13,7 @@ If using the remote version, make sure to Setup a virtual envoriment in the Top-
 start by typing the command
 ```bash
 python -m venv .venv
-
+````
 then activate the envorimanet using
 ```bash
 source .venv/bin/activate
