@@ -16,10 +16,8 @@ python -m venv .venv
 
 then activate the envorimanet using
 ```bash
-# Start of the code block
 source .venv/bin/activate
-# End of the code block
-
+```
 This will ensure no conflict will happen and the software will run smoothly
 
 Then download and install pylon library from https://www.baslerweb.com/en/downloads/software/2907135243/ , give sudo permit to install USB rules, in case of doubt, follow `Install.txt` instructions.
