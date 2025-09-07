@@ -8,8 +8,21 @@ This repository contains two implementations of a Digital Holography Microscope 
 ---
 
 ## Prerequisites
-Before starting, make sure you have the following installed on your system:
 
+If using the remote version, make sure to Setup a virtual envoriment in the Top-level of the local repository.
+start by typing the command
+```bash
+python -m venv .venv
+
+then activate the envorimanet using
+```bash
+source .venv/bin/activate
+
+This will ensure no conflict will happen and the software will run smoothly
+
+Then download and install pylon library from https://www.baslerweb.com/en/downloads/software/2907135243/ , give sudo permit to install USB rules, in case of doubt, follow `Install.txt` instructions.
+
+For both versinos, make sure you have the following installed on your system:
 - an operating system installed on the Raspberry Pi
 - Python **3.0+**
 - **pip** (Python package manager)
@@ -17,10 +30,9 @@ Before starting, make sure you have the following installed on your system:
 - an IDE 
 
 Start by typing the following command in the terminal:
- pip install -r requirements.txt
+```bash
+pip install -r requirements.txt
 Which will install all dependencies for both local and remote (front & back ends) versions
-
-Then download and install pylon library from https://www.baslerweb.com/en/downloads/software/2907135243/ , give sudo permit to install USB rules, in case of doubt, follow `Install.txt` instructions.
 
 ---
 
