@@ -32,6 +32,7 @@ For both versinos, make sure you have the following installed on your system:
 Start by typing the following command in the terminal:
 ```bash
 pip install -r requirements.txt
+```
 Which will install all dependencies for both local and remote (front & back ends) versions
 
 ---
