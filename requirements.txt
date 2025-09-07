@@ -1,0 +1,10 @@
+numpy
+matplotlib
+scikit-image
+Pillow
+opencv-python
+pypylon
+fastapi
+uvicorn
+pydantic
+plotly
