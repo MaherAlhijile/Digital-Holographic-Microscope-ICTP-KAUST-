@@ -22,6 +22,34 @@ This will ensure no conflict will happen and the software will run smoothly
 
 Then download and install pylon library from https://www.baslerweb.com/en/downloads/software/2907135243/ , give sudo permit to install USB rules, in case of doubt, follow `Install.txt` instructions.
 
+Finally, we install the motors depenccies. in the server side (must be linux) install the WiringPi library for controling the motors
+first clone it
+```bash
+git clone https://github.com/WiringPi/WiringPi.git
+```
+then enter the directory
+```bash
+cd WiringPi
+```
+and build the libaray
+```bash
+./build
+```
+now check if it was successfully installed
+```bash
+gpio -v
+```
+
+Now we have to install the python wrapper, clone the following repo
+
+```bash
+git clone https://github.com/sultanf110/stepper_motor.git
+```
+then enter the dirctory and install
+```bash
+pip install .
+```
+
 For both versions, make sure you have the following installed on your system:
 - an operating system installed on the Raspberry Pi
 - Python **3.0+**
@@ -34,6 +62,7 @@ Start by typing the following command in the terminal:
 pip install -r requirements.txt
 ```
 Which will install all dependencies for both local and remote (front & back ends) versions
+
 
 ---
 
