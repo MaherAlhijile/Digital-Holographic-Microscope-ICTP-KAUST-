@@ -82,6 +82,7 @@ Features include:
 
 
 ### Folder Structure:
+```
 /remote
    ├── backend/
    │     ├── server.py         # FastAPI server + endpoints
@@ -90,7 +91,7 @@ Features include:
    │     ├── index.html        # Web GUI
    │     ├── css/
    │     ├── js/
-
+```
 ### How to Run:
 1. Navigate to the backend folder
 ```Bash
