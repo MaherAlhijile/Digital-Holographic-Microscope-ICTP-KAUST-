@@ -21,7 +21,7 @@ from pydantic import BaseModel
 
 import plotly.graph_objs as go
 import plotly.io as pio
-from sys_functions import (compute_3d_thickness, get_phase_difference, check_spectrum, reduce_noise, compute_1d_thickness)
+from sys_functions import (move_motor, compute_3d_thickness, get_phase_difference, check_spectrum, reduce_noise, compute_1d_thickness)
 
 
 app = FastAPI()
