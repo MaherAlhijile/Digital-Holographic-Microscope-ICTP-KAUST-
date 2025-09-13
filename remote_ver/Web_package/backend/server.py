@@ -324,6 +324,24 @@ async def stop_camera():
         return {"error": str(e)}
 
 
+@app.post("/move_motor")
+def move_motor_endpoint(params: dict):
+    try:
+        motor_number = int(params["motor_number"])
+        steps = int(params["steps"])
+        latency_ms = int(params["latency_ms"])
+        direction = int(params["direction"])  # only if direction is numeric; otherwise keep as string
+
+        # Call your motor function
+        move_motor(motor_number, steps, latency_ms, direction)
+
+        return {"status": "success", "message": f"Motor {motor_number} moved {steps} steps."}
+    except Exception as e:
+        return {"status": "error", "message": str(e)}
+
+
+
+
 # Calculate absolute path to frontend folder
 frontend_path = os.path.join(os.path.dirname(__file__), "..", "Frontend", "src")
 app.mount("/", StaticFiles(directory=frontend_path, html=True), name="frontend")

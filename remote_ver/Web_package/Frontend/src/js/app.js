@@ -10,6 +10,8 @@ let imageCaptured = null
 let refCaptured = null
 let stream = null;
 
+ip = "140.105.28.40"
+port = "8000"
 
 document.addEventListener("DOMContentLoaded", function () {
 
@@ -53,7 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 async function selectROI(x1, y1, x2, y2) {
     try {
-        const response = await fetch("http://192.168.1.121:8000/select_roi", {
+        const response = await fetch("http://"+ ip +":"+ port +"/select_roi", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ x1, y1, x2, y2 })
@@ -71,6 +73,50 @@ async function selectROI(x1, y1, x2, y2) {
     }
 }
 
+
+async function move_motor(motor_number, steps, latency_ms, direction) {
+    try {
+        const response = await fetch("http://"+ ip +":"+ port +"/move_motor_endpoint", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ x1, y1, x2, y2 })
+        });
+        const data = await response.json();
+        if (data.error) {
+            alert(data.error);
+        } else {
+
+
+        }
+    } catch (error) {
+        console.error("Error selecting ROI:", error);
+        alert("Error selecting ROI: " + error.message);
+    }
+}
+
+
+
+document.getElementById("up").addEventListener("click", () => {
+    console.log("Up button clicked");
+
+});
+
+document.getElementById("down").addEventListener("click", () => {
+    console.log("Down button clicked");
+});
+
+document.getElementById("left").addEventListener("click", () => {
+    console.log("Left button clicked");
+});
+
+document.getElementById("right").addEventListener("click", () => {
+    console.log("Right button clicked");
+});
+
+document.getElementById("home").addEventListener("click", () => {
+    console.log("Home button clicked");
+
+});
 
 
 function startROISelection() {
@@ -222,7 +268,7 @@ async function sendParams() {
 
 
     try {
-        const response = await fetch("http://192.168.1.121:8000/run_phase_difference", {
+        const response = await fetch("http://"+ ip +":"+ port +"/run_phase_difference", {
             method: "POST",
             body: formData
         });
@@ -289,7 +335,7 @@ async function sendParams() {
 
 async function fetchSpectrum() {
     try {
-        const response = await fetch("http://192.168.1.121:8000/check_spectrum");
+        const response = await fetch("http://"+ ip +":"+ port +"/check_spectrum");
         const data = await response.json();
         if (data.error) {
             alert(data.error);
@@ -299,7 +345,7 @@ async function fetchSpectrum() {
         alert(data.imageArray_shiftft, data.mask_bool, data.max_y, data.max_x)
         const spectrumOutput = document.getElementById("spectrumOutput")
         spectrumOutput.innerHTML = `<div id="spectrumOutput" style="width:100%; height:100%;"></div>`;
-       
+
     } catch (error) {
         console.error("Error:", error);
         alert("Error: " + error.message);
@@ -310,7 +356,7 @@ async function fetchSpectrum() {
 //recieves information returned from backend after 3d computation
 async function fetch3DPlot() {
     try {
-        const response = await fetch("http://192.168.1.121:8000/compute_3d");
+        const response = await fetch("http://"+ ip +":"+ port +"/compute_3d");
         const data = await response.json();
         if (data.error) {
             alert(data.error);
@@ -523,7 +569,7 @@ async function fetch1DPlot() {
     const y2 = Math.round(point2.y);
 
     try {
-        const response = await fetch("http://192.168.1.121:8000/compute_1d", {
+        const response = await fetch("http://"+ ip +":"+ port +"/compute_1d", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
@@ -569,7 +615,7 @@ async function fetch1DPlot() {
 
 async function selectROI(x1, y1, x2, y2) {
     try {
-        const response = await fetch("http://192.168.1.121:8000/select_roi", {
+        const response = await fetch("http://"+ ip +":"+ port +"/select_roi", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ x1, y1, x2, y2 })
@@ -621,12 +667,12 @@ toggleCamera.addEventListener('click', () => {
 //camera
 async function initializeCamera() {
     try {
-        const res = await fetch("http://192.168.1.121:8000/start_camera");
+        const res = await fetch("http://"+ ip +":"+ port +"/start_camera");
         const data = await res.json();
         if (data.error) {
             alert("Failed to start camera: " + data.error);
         } else {
-            document.getElementById("cameraStream").src = "http://192.168.1.121:8000/camera_feed";
+            document.getElementById("cameraStream").src = "http://"+ ip +":"+ port +"/camera_feed";
         }
     } catch (err) {
         alert("Error connecting to server: " + err.message);
@@ -637,7 +683,7 @@ async function initializeCamera() {
 async function setExposure() {
     const exposureValue = document.getElementById("exposureInput").value;
     try {
-        const res = await fetch("http://192.168.1.121:8000/set_exposure", {
+        const res = await fetch("http://"+ ip +":"+ port +"/set_exposure", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ exposure: parseFloat(exposureValue) })
@@ -659,7 +705,7 @@ async function setExposure() {
 async function captureImage() {
     const type = document.getElementById("captureType").value; // "object" or "reference"
     try {
-        const res = await fetch("http://192.168.1.121:8000/capture_image", {
+        const res = await fetch("http://"+ ip +":"+ port +"/capture_image", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ type: type })
@@ -685,7 +731,7 @@ async function captureImage() {
 async function stopCamera() {
     try {
         document.getElementById("cameraStream").src = "";  // Stop image
-        await fetch("http://192.168.1.121:8000/stop_camera");
+        await fetch("http://"+ ip +":"+ port +"/stop_camera");
     } catch (error) {
         console.error("Failed to stop camera on backend:", error);
     }
